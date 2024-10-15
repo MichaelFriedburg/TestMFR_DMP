@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 6",
+	"properties": {
+		"content": {
+			"query": "SELECT *\nFROM OPENROWSET(\n    BULK 'abfss://synapse@stdlimmotst1synapse.dfs.core.windows.net/synapse/workspaces/synw-immo-tst-1/fin_ist_beleg/COREVIEW.vw_OBJ_FIN_IST_BELEG.parquet',\n    FORMAT='PARQUET'\n) AS [result]\n\n--abfss://synapse@stdlimmotst1synapse.dfs.core.windows.net/synapse/workspaces/synw-immo-tst-1/fin_ist_beleg/COREVIEW.vw_OBJ_FIN_IST_BELEG.parquet",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "default",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

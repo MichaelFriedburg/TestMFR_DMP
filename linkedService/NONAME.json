@@ -1,0 +1,11 @@
+{
+	"name": "NONAME",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"type": "AzureKeyVault",
+		"annotations": [],
+		"typeProperties": {
+			"baseUrl": "https://kv-immo-tst-1-cust.vault.azure.net"
+		}
+	}
+}

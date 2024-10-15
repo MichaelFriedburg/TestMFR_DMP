@@ -1,0 +1,107 @@
+{
+	"name": "ml_rohdaten_output_anlegen",
+	"properties": {
+		"folder": {
+			"name": "ML_Notebooks_Einkaufsdaten"
+		},
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "sparkpool0",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "9fee9505-9bc0-449f-8cb0-27b67d473114"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1"
+			},
+			"enableDebugMode": false,
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/2f51148a-d202-478e-93f0-ade833d83f40/resourceGroups/rg-dbim-immo-tst-1/providers/Microsoft.Synapse/workspaces/synw-immo-tst-1/bigDataPools/sparkpool0",
+				"name": "sparkpool0",
+				"type": "Spark",
+				"endpoint": "https://synw-immo-tst-1.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool0",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
+				},
+				"sparkVersion": "3.4",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%sql\r\n",
+					"\r\n",
+					"-- use mydatabase Wie kann ich die Datenbank auswählen ??\r\n",
+					"\r\n",
+					"-- Erstellen einer neuen Tabelle\r\n",
+					"\r\n",
+					"CREATE TABLE ml_einkaufsdaten_rohdaten_output (\r\n",
+					"    BELEGDATUM varchar (255),\r\n",
+					"    BESTELLMENGE varchar (255),\r\n",
+					"    BESTELLMENGENEINHEIT varchar (255),\r\n",
+					"    BESTELLNETTOWERT varchar (255),\r\n",
+					"    BEZUGSDATUM varchar (255),\r\n",
+					"    EINKAUFSBELEG varchar (255),\r\n",
+					"    EINK_ORGANISATION varchar (255),\r\n",
+					"    GEBAEUDE varchar (255),\r\n",
+					"    KONTIERUNGSTYP varchar (255),\r\n",
+					"    KOSTENRECHNUNGSKREIS varchar (255),\r\n",
+					"    KOSTENSTELLE varchar (255),\r\n",
+					"    LAUFENDE_KONTIERUNG varchar (255),\r\n",
+					"    LIEFERANT_LIEFERWERK varchar (255),\r\n",
+					"    MATERIAL varchar (255),\r\n",
+					"    NETTOPREIS varchar (255),\r\n",
+					"    NOCH_ZU_BERECHNEN_WERT varchar (255),\r\n",
+					"    OFFENER_GESAMTWERT varchar (255),\r\n",
+					"    POSITIONEN varchar (255),\r\n",
+					"    PSP_ELEMENT varchar (255),\r\n",
+					"    RAHMENKOSTENSTELLE varchar (255),\r\n",
+					"    SACHKONTO varchar (255),\r\n",
+					"    STEUERKENNZEICHEN varchar (255),\r\n",
+					"    VERTEILUNG varchar (255),\r\n",
+					"    WARENGRUPPE varchar (255),\r\n",
+					"    WERK varchar (255),\r\n",
+					"    WIRTSCHAFTSEINHEIT varchar (255)\r\n",
+					"\r\n",
+					"    \r\n",
+					")\r\n",
+					"--USING delta --Was bedeutet dieses Format?\r\n",
+					"--PARTITIONED BY (id);"
+				],
+				"execution_count": 1
+			}
+		]
+	}
+}

@@ -1,0 +1,102 @@
+{
+	"name": "Notebook 1",
+	"properties": {
+		"folder": {
+			"name": "ML_Notebooks_FIN_IST_BELEG"
+		},
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "sparkpool0",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "db045883-f279-4f72-bc70-0958a69d2bb8"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1"
+			},
+			"enableDebugMode": false,
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/2f51148a-d202-478e-93f0-ade833d83f40/resourceGroups/rg-dbim-immo-tst-1/providers/Microsoft.Synapse/workspaces/synw-immo-tst-1/bigDataPools/sparkpool0",
+				"name": "sparkpool0",
+				"type": "Spark",
+				"endpoint": "https://synw-immo-tst-1.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool0",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
+				},
+				"sparkVersion": "3.4",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "python"
+					}
+				},
+				"source": [
+					"%%pyspark # Verwende PySpark\r\n",
+					"\r\n",
+					"from pyspark.sql import SparkSession\r\n",
+					"from pyspark.sql.types import StructType, StructField, StringType, IntegerType\r\n",
+					"\r\n",
+					"# Beispiel-Schema für die Tabelle\r\n",
+					"schema = StructType([\r\n",
+					"    StructField(\"Name\", StringType(), True),\r\n",
+					"    StructField(\"Alter\", IntegerType(), True)\r\n",
+					"])\r\n",
+					"\r\n",
+					"# Beispiel-Daten\r\n",
+					"daten = [(\"Anna\", 30),\r\n",
+					"         (\"Bob\", 28),\r\n",
+					"         (\"Carl\", 35)]\r\n",
+					"\r\n",
+					"# Spark Session verwenden\r\n",
+					"spark = SparkSession.builder.appName(\"SynapseBeispiel\").getOrCreate()\r\n",
+					"\r\n",
+					"# DataFrame erstellen\r\n",
+					"df = spark.createDataFrame(data=daten, schema=schema)\r\n",
+					"\r\n",
+					"# Zeige die Daten\r\n",
+					"df.show()\r\n",
+					"\r\n",
+					"# Tabelle im Hive Metastore speichern\r\n",
+					"df.write.saveAsTable(\"synapse_db.beispiel_tabelle\")\r\n",
+					"\r\n",
+					"\r\n",
+					"\r\n",
+					"\r\n",
+					"    \r\n",
+					"   \r\n",
+					"    \r\n",
+					""
+				]
+			}
+		]
+	}
+}

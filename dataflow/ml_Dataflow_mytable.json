@@ -1,0 +1,93 @@
+{
+	"name": "ml_Dataflow_mytable",
+	"properties": {
+		"folder": {
+			"name": "ML_Dataflow_mytable"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "select1"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "cast1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          id as integer,",
+				"          firstname as string,",
+				"          lastname as string,",
+				"          age as integer,",
+				"          email as string,",
+				"          address as string,",
+				"          phone_number as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     store: 'synapse',",
+				"     databaseType: 'spark',",
+				"     format: 'table',",
+				"     database: 'default',",
+				"     tableName: 'ml_mytable') ~> source1",
+				"source1 select(mapColumn(",
+				"          each(match(/*|| contains(['i', 'a'], name)*/startsWith(name,'i')||startsWith(name,'f')||startsWith(name,'a')||type=='string'))",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 derive(TIMESTAMP = currentTimestamp(),",
+				"          FIRSTNAME_LASTNAME = concat(firstname,'_ ', lastname),",
+				"          DATUM_HEUTE = currentDate()) ~> derivedColumn1",
+				"derivedColumn1 cast(output(",
+				"          id as integer",
+				"     ),",
+				"     errors: true) ~> cast1",
+				"cast1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     store: 'synapse',",
+				"     databaseType: 'spark',",
+				"     format: 'table',",
+				"     database: 'default',",
+				"     tableName: 'ml_mytable_output',",
+				"     input(",
+				"          id as integer,",
+				"          firstname as string,",
+				"          lastname as string,",
+				"          age as integer,",
+				"          email as string,",
+				"          address as string,",
+				"          phone_number as string,",
+				"          TIMESTAMP as date,",
+				"          FIRSTNAME_LASTNAME as string,",
+				"          DATUM_HEUTE as date",
+				"     ),",
+				"     mapColumn(",
+				"          id,",
+				"          firstname,",
+				"          lastname,",
+				"          age,",
+				"          email,",
+				"          address,",
+				"          phone_number,",
+				"          TIMESTAMP,",
+				"          FIRSTNAME_LASTNAME,",
+				"          DATUM_HEUTE",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}

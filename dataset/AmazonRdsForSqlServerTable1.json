@@ -1,0 +1,17 @@
+{
+	"name": "AmazonRdsForSqlServerTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AmazonRdsForSqlServer_tu_ldg",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AmazonRdsForSqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "TBL_TEST_MFR"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

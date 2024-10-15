@@ -1,0 +1,10 @@
+{
+	"name": "noname",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/2f51148a-d202-478e-93f0-ade833d83f40/resourceGroups/rg-dbim-immo-tst-1/providers/Microsoft.KeyVault/vaults/kv-immo-tst-1-cust",
+		"groupId": "vault",
+		"fqdns": [
+			"kv-immo-tst-1-cust.vault.azure.net"
+		]
+	}
+}

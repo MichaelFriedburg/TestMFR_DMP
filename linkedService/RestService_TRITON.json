@@ -1,0 +1,19 @@
+{
+	"name": "RestService_TRITON",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://apis.hub.db.de/db/apis/nonprod/triton-refx/v1/BuildingSet",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Basic",
+			"userName": "9fa6934ae479fc261d96ce07a0481c9a",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIxYzQ2MTZjYy05YjI0LTRlYmYtOTE2Mi02YjdiZTRkNWRhOGQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "ComputeNetRuntime1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

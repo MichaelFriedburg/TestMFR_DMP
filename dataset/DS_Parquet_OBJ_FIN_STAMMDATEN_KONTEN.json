@@ -1,0 +1,22 @@
+{
+	"name": "DS_Parquet_OBJ_FIN_STAMMDATEN_KONTEN",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SDSGEN_FIN_IST_BELEG",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "OBJ_FIN_STAMMDATEN_KONTEN",
+				"folderPath": "synapse/workspaces/synw-immo-tst-1/fin_ist_beleg",
+				"fileSystem": "synapse"
+			},
+			"compressionCodec": "gzip"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

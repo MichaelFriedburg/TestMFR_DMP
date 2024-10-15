@@ -1,0 +1,41 @@
+{
+	"name": "Datalake_Dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "datalake_backup_source",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"DataLake_Name": {
+					"value": "@dataset().DataLake_Zone",
+					"type": "Expression"
+				},
+				"Environment_Name": "stimmotst1"
+			}
+		},
+		"parameters": {
+			"DataLake_Zone": {
+				"type": "string",
+				"defaultValue": "landing"
+			},
+			"Folder_Path": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@dataset().Folder_Path",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().DataLake_Zone",
+					"type": "Expression"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

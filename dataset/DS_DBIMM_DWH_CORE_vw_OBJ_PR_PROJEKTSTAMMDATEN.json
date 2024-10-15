@@ -1,0 +1,291 @@
+{
+	"name": "DS_DBIMM_DWH_CORE_vw_OBJ_PR_PROJEKTSTAMMDATEN",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_DBIMM_DWH_CORE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AmazonRdsForSqlServerTable",
+		"schema": [
+			{
+				"name": "ID_HASH_IST_BELEG",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ID_BELEGNUMMER",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_BESTELLNUMMER_MM",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ID_SAPFI_HON_ABRECHNUNG",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_PROJEKTNUMMER",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_SAPFI_KLVR",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_BST",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ID_RKOST",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_KONTEN",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_VERR_BSTVKZ",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_DATENART",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_BESTAND",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_STEUERKENNZEICHEN",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_WERT",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_KONZERNVERRECHNUNGSNUMMER",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_AAR_NUMMER",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_MIETVERTRAG_NR",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_PSP_KONZERN",
+				"type": "varchar"
+			},
+			{
+				"name": "BUCHUNGSKREIS",
+				"type": "varchar"
+			},
+			{
+				"name": "BST",
+				"type": "varchar"
+			},
+			{
+				"name": "BST_KT_SPARTE",
+				"type": "varchar"
+			},
+			{
+				"name": "BST_KT_SPARTE_SORT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BST_EBENE_1",
+				"type": "varchar"
+			},
+			{
+				"name": "BST_EBENE1_SORT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BST_EBENE_2",
+				"type": "varchar"
+			},
+			{
+				"name": "BST_OPERATIV",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BUCHUNGSZEITRAUM",
+				"type": "varchar"
+			},
+			{
+				"name": "BELEGNUMMER",
+				"type": "varchar"
+			},
+			{
+				"name": "JAHR",
+				"type": "varchar"
+			},
+			{
+				"name": "MONATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SYSTEM_AAR_KVT",
+				"type": "varchar"
+			},
+			{
+				"name": "BELEGART",
+				"type": "varchar"
+			},
+			{
+				"name": "BUCHUNGSDATUM",
+				"type": "date"
+			},
+			{
+				"name": "ERFASSUNGSDATUM",
+				"type": "date"
+			},
+			{
+				"name": "AAR_NUMMER",
+				"type": "varchar"
+			},
+			{
+				"name": "PROJEKTNUMMER",
+				"type": "varchar"
+			},
+			{
+				"name": "REPORT_IST_EURO",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 2
+			},
+			{
+				"name": "BELEGTEXT",
+				"type": "varchar"
+			},
+			{
+				"name": "BELEGTEXT_2",
+				"type": "varchar"
+			},
+			{
+				"name": "BELEGTEXT_3",
+				"type": "varchar"
+			},
+			{
+				"name": "BESTELLNUMMER",
+				"type": "varchar"
+			},
+			{
+				"name": "BESTELLPOSITION",
+				"type": "varchar"
+			},
+			{
+				"name": "KREDITOR_NR",
+				"type": "varchar"
+			},
+			{
+				"name": "DEBITOR_NR",
+				"type": "varchar"
+			},
+			{
+				"name": "GESCHAEFTSBEREICH",
+				"type": "varchar"
+			},
+			{
+				"name": "KONZERNVERRECHNUNGSNUMMER",
+				"type": "varchar"
+			},
+			{
+				"name": "MIETVERTRAG_AMV",
+				"type": "varchar"
+			},
+			{
+				"name": "MIETVERTRAG_AMV_FL",
+				"type": "varchar"
+			},
+			{
+				"name": "MIETVERTRAG_VMV",
+				"type": "varchar"
+			},
+			{
+				"name": "BETRAG_IST",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 2
+			},
+			{
+				"name": "WERT",
+				"type": "varchar"
+			},
+			{
+				"name": "BUDGETPOSITION_SEKUNDAER",
+				"type": "varchar"
+			},
+			{
+				"name": "KONTEN_FAKTOR",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DATENQUELLE",
+				"type": "varchar"
+			},
+			{
+				"name": "SUBST_KOMBI",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SUBST_KOMBI_2",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_BST_VALID_TIME",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_KONTEN_VALID_TIME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "KONTEN",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_RKOST_VALID_TIME",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_VERR_BSTVKZ_VALID_TIME",
+				"type": "varchar"
+			},
+			{
+				"name": "__LDG__CREATED",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "__STG__CREATED",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "__PRE_CORE__CREATED",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "__CORE__CREATED",
+				"type": "datetime2",
+				"scale": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "COREVIEW",
+			"table": "vw_OBJ_PR_PROJEKTSTAMMDATEN"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

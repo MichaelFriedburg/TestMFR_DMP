@@ -1,0 +1,16 @@
+{
+	"name": "storebackup",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"type": "AzureBlobStorage",
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		},
+		"annotations": [],
+		"typeProperties": {
+			"serviceEndpoint": "https://stimmotst1backup.blob.core.windows.net",
+			"accountKind": "StorageV2"
+		}
+	}
+}

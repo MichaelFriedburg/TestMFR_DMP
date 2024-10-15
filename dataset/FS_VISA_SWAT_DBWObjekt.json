@@ -1,0 +1,29 @@
+{
+	"name": "FS_VISA_SWAT_DBWObjekt",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "FS_VISA_Projekte",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": "DBWObjekt.csv",
+				"folderPath": "Projekte"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Auftragsnummer\tBezugsgrößen-Nr.\tLeistungsdatum\tBuchungsdatum\tHerkunfts-Auftr.\tWert\tBel. Kostenart\tLeist BST BEW\tLeistende Rahmenkostenstelle\tBeleg ID\tMenge\tSegmenttext\tBel Bahnstelle",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "DBIMM_DWH_CORE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_DBIMM_DWH_CORE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "COREVIEW",
+			"table": "vw_OBJ_FIN_IST_BELEG"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

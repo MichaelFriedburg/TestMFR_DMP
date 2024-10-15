@@ -1,0 +1,183 @@
+{
+	"name": "SqlServer_Swat_DBW_OBJECT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "__SOURCE_OBJECT",
+				"type": "varchar"
+			},
+			{
+				"name": "__LDG__CREATED",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "__LDG__PROCESS_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "__LDG__ROWNUMBER",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "GUID",
+				"type": "varchar"
+			},
+			{
+				"name": "CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "PAKETCODE",
+				"type": "varchar"
+			},
+			{
+				"name": "TYP",
+				"type": "varchar"
+			},
+			{
+				"name": "BAHNHOFDS100",
+				"type": "varchar"
+			},
+			{
+				"name": "BAHNHOFNR",
+				"type": "varchar"
+			},
+			{
+				"name": "ANLAGENR",
+				"type": "varchar"
+			},
+			{
+				"name": "JAHRAKTIVIERUNG",
+				"type": "varchar"
+			},
+			{
+				"name": "TPEBENE3",
+				"type": "varchar"
+			},
+			{
+				"name": "STRECKENR",
+				"type": "varchar"
+			},
+			{
+				"name": "JAHRABARBEITUNGSOLL",
+				"type": "varchar"
+			},
+			{
+				"name": "JAHRABARBEITUNGVIST",
+				"type": "varchar"
+			},
+			{
+				"name": "KMVON",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "KMBIS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "KMLAENGE",
+				"type": "varchar"
+			},
+			{
+				"name": "BUNDESLAND",
+				"type": "varchar"
+			},
+			{
+				"name": "LANDKREIS",
+				"type": "varchar"
+			},
+			{
+				"name": "GESCHAEFTSFELD",
+				"type": "varchar"
+			},
+			{
+				"name": "ORGANISATION",
+				"type": "varchar"
+			},
+			{
+				"name": "PRIORITAET",
+				"type": "varchar"
+			},
+			{
+				"name": "PRUEFFALLRELEVANT",
+				"type": "varchar"
+			},
+			{
+				"name": "EIGENTUMBEMERKUNG",
+				"type": "varchar"
+			},
+			{
+				"name": "ANZAHLSGB",
+				"type": "varchar"
+			},
+			{
+				"name": "GLEW",
+				"type": "varchar"
+			},
+			{
+				"name": "DATBEGEHUNG",
+				"type": "varchar"
+			},
+			{
+				"name": "BEMERKUNG",
+				"type": "varchar"
+			},
+			{
+				"name": "GEOTYP",
+				"type": "varchar"
+			},
+			{
+				"name": "GEOLAENGEVON",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GEOLAENGEBIS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GEOBREITEVON",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GEOBREITEBIS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CLUSTER",
+				"type": "varchar"
+			},
+			{
+				"name": "BAHNHOFSMANAGEMENT",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "SWAT",
+			"table": "DBW_OBJEKT"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

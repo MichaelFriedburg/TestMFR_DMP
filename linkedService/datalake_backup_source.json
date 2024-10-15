@@ -1,0 +1,23 @@
+{
+	"name": "datalake_backup_source",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"type": "AzureBlobFS",
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		},
+		"parameters": {
+			"DataLake_Name": {
+				"type": "string"
+			},
+			"Environment_Name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"typeProperties": {
+			"url": "@{concat('https://', linkedService().Environment_Name, linkedService().DataLake_Name, '.dfs.core.windows.net/')}"
+		}
+	}
+}

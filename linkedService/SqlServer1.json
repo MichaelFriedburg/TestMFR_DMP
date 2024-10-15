@@ -1,0 +1,21 @@
+{
+	"name": "SqlServer1",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "dwhfmtu.cv3hazgbsyhk.eu-central-1.rds.amazonaws.com",
+			"database": "DBIMM_DWH_LDG",
+			"encrypt": "optional",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "MichaelFriedburg",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJiOWNjY2YyZi05MWIwLTQwNGUtYmE2Zi0yM2RkZDZiNWEwOWMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "ComputeNetRuntime1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

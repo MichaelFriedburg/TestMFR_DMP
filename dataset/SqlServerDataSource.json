@@ -1,0 +1,18 @@
+{
+	"name": "SqlServerDataSource",
+	"properties": {
+		"description": "Connection to your data source store.",
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_Server_STG",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": ""
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

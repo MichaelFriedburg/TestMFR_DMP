@@ -1,0 +1,10 @@
+{
+	"name": "synapse-ws-sql--synw-immo-tst-1",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/2f51148a-d202-478e-93f0-ade833d83f40/resourceGroups/rg-dbim-immo-tst-1/providers/Microsoft.Synapse/workspaces/synw-immo-tst-1",
+		"groupId": "sql",
+		"fqdns": [
+			"synw-immo-tst-1.d5263d67-72f9-430b-9a19-1817e6de6156.sql.azuresynapse.net"
+		]
+	}
+}

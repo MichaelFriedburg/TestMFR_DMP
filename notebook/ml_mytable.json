@@ -1,0 +1,234 @@
+{
+	"name": "ml_mytable",
+	"properties": {
+		"folder": {
+			"name": "ML_Notebooks_mytable"
+		},
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "sparkpool0",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "6517782d-3a86-410d-b0eb-dfc89288a8d9"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1"
+			},
+			"enableDebugMode": false,
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/2f51148a-d202-478e-93f0-ade833d83f40/resourceGroups/rg-dbim-immo-tst-1/providers/Microsoft.Synapse/workspaces/synw-immo-tst-1/bigDataPools/sparkpool0",
+				"name": "sparkpool0",
+				"type": "Spark",
+				"endpoint": "https://synw-immo-tst-1.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool0",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
+				},
+				"sparkVersion": "3.4",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%sql\r\n",
+					"\r\n",
+					"-- use mydatabase Wie kann ich die Datenbank auswählen ??\r\n",
+					"\r\n",
+					"-- Erstellen einer neuen Tabelle\r\n",
+					"\r\n",
+					"CREATE TABLE ml_mytable (\r\n",
+					"    id INT,\r\n",
+					"    firstname varchar (1000),\r\n",
+					"    lastname varchar (1000),\r\n",
+					"    age INT,\r\n",
+					"    email STRING,\r\n",
+					"    address STRING,\r\n",
+					"    phone_number STRING\r\n",
+					"    \r\n",
+					")\r\n",
+					"USING delta --Was bedeutet dieses Format?\r\n",
+					"PARTITIONED BY (id);"
+				],
+				"execution_count": 3
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "python"
+					},
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"%%pyspark # Verwende PySpark\r\n",
+					"\r\n",
+					"# Lade die notwendigen Bibliotheken\r\n",
+					"from pyspark.sql import SparkSession\r\n",
+					"from pyspark.sql.types import IntegerType, StringType, StructType, StructField\r\n",
+					"\r\n",
+					"# Definiere das Schema explizit\r\n",
+					"schema = StructType([\r\n",
+					"    StructField(\"id\", IntegerType(), True),\r\n",
+					"    StructField(\"firstname\", StringType(), True),\r\n",
+					"    StructField(\"lastname\", StringType(), True),\r\n",
+					"    StructField(\"age\", IntegerType(), True),\r\n",
+					"    StructField(\"email\", StringType(), True),\r\n",
+					"    StructField(\"address\", StringType(), True),\r\n",
+					"    StructField(\"phone_number\", StringType(), True)\r\n",
+					"])\r\n",
+					"\r\n",
+					"#Beispiel: CSV-Daten in eine bestehende Tabelle einfügen\r\n",
+					"# CSV-Datei in ein DataFrame laden\r\n",
+					"csv_file_path = \"abfss://synapse@stdlimmotst1synapse.dfs.core.windows.net/synapse/workspaces/synw-immo-tst-1/warehouse/UT_C/ml_mytable_sales_costumer.csv\"\r\n",
+					"\r\n",
+					"\r\n",
+					"# Lade die CSV-Datei in ein Spark DataFrame\r\n",
+					"df = spark.read.format(\"csv\").option(\"header\", \"true\").option(\"delimiter\", \";\").schema(schema).load(csv_file_path)\r\n",
+					"\r\n",
+					"# Zeige die ersten paar Zeilen des DataFrames an\r\n",
+					"df.show()\r\n",
+					"df.printSchema()"
+				],
+				"execution_count": 1
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "python"
+					},
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"%%pyspark\r\n",
+					"\r\n",
+					"# Schreibe den DataFrame in die bestehende Tabelle\r\n",
+					"table_name = \"ml_mytable\"\r\n",
+					"\r\n",
+					"# Verwende die \"append\" Methode, um die Daten einzufügen\r\n",
+					"df.write.format(\"delta\").mode(\"append\").saveAsTable(table_name)"
+				],
+				"execution_count": 2
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%sql\r\n",
+					"\r\n",
+					"-- use mydatabase Wie kann ich die Datenbank auswählen ??\r\n",
+					"\r\n",
+					"-- Erstellen einer neuen Tabelle\r\n",
+					"\r\n",
+					"CREATE TABLE ml_mytable_output (\r\n",
+					"    id INT,\r\n",
+					"    firstname varchar (1000),\r\n",
+					"    lastname varchar (1000),\r\n",
+					"    age INT,\r\n",
+					"    email STRING,\r\n",
+					"    address STRING,\r\n",
+					"    phone_number STRING\r\n",
+					"    \r\n",
+					")\r\n",
+					"USING delta --Was bedeutet dieses Format?\r\n",
+					"PARTITIONED BY (id);"
+				],
+				"execution_count": 3
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%sql\r\n",
+					"\r\n",
+					"-- Hinzufügen einer neuen Spalte\r\n",
+					"\r\n",
+					"ALTER TABLE ml_mytable_output\r\n",
+					"ADD COLUMNS \r\n",
+					"(\r\n",
+					"TIMESTAMP DATE,\r\n",
+					"FIRSTNAME_LASTNAME STRING,\r\n",
+					"DATUM_HEUTE DATE\r\n",
+					"\r\n",
+					")"
+				],
+				"execution_count": 5
+			}
+		]
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 1",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100) [BELEGDATUM]\n,[BESTELLMENGE]\n,[BESTELLMENGENEINHEIT]\n,[BESTELLNETTOWERT]\n,[BEZUGSDATUM]\n,[EINKAUFSBELEG]\n,[EINK_ORGANISATION]\n,[GEBAEUDE]\n,[KONTIERUNGSTYP]\n,[KOSTENRECHNUNGSKREIS]\n,[KOSTENSTELLE]\n,[LAUFENDE_KONTIERUNG]\n,[LIEFERANT_LIEFERWERK]\n,[MATERIAL]\n,[NETTOPREIS]\n,[NOCH_ZU_BERECHNEN_WERT]\n,[OFFENER_GESAMTWERT]\n,[POSITIONEN]\n,[PSP_ELEMENT]\n,[RAHMENKOSTENSTELLE]\n,[SACHKONTO]\n,[STEUERKENNZEICHEN]\n,[VERTEILUNG]\n,[WARENGRUPPE]\n,[WERK]\n,[WIRTSCHAFTSEINHEIT]\n FROM [default].[dbo].[ml_einkaufsdaten_rohdaten]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "default",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

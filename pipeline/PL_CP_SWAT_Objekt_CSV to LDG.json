@@ -1,0 +1,486 @@
+{
+	"name": "PL_CP_SWAT_Objekt_CSV to LDG",
+	"properties": {
+		"activities": [
+			{
+				"name": "PL_CP_SWAT_Objekt",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"additionalColumns": [
+							{
+								"name": "__LDG__PROCESS_ID",
+								"value": {
+									"value": "@substring(pipeline().RunId,1,19)",
+									"type": "Expression"
+								}
+							},
+							{
+								"name": "__LDG__CREATED",
+								"value": {
+									"value": "@pipeline().TriggerTime",
+									"type": "Expression"
+								}
+							},
+							{
+								"name": "__LDG__ROWNUMBER",
+								"value": "1"
+							},
+							{
+								"name": "__SOURCE_OBJECT",
+								"value": "\"SWAT_OBJEKT\""
+							}
+						],
+						"storeSettings": {
+							"type": "FileServerReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"preCopyScript": "TRUNCATE TABLE [DBIMM_DWH_LDG].[SWAT].[DBW_OBJEKT]",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "__SOURCE_OBJECT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "__SOURCE_OBJECT"
+								}
+							},
+							{
+								"source": {
+									"name": "__LDG__CREATED",
+									"type": "String"
+								},
+								"sink": {
+									"name": "__LDG__CREATED"
+								}
+							},
+							{
+								"source": {
+									"name": "__LDG__PROCESS_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "__LDG__PROCESS_ID"
+								}
+							},
+							{
+								"source": {
+									"name": "__LDG__ROWNUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "__LDG__ROWNUMBER"
+								}
+							},
+							{
+								"source": {
+									"name": "ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ID"
+								}
+							},
+							{
+								"source": {
+									"name": "Guid",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "GUID"
+								}
+							},
+							{
+								"source": {
+									"name": "Code",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CODE"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NAME"
+								}
+							},
+							{
+								"source": {
+									"name": "PaketCode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PAKETCODE"
+								}
+							},
+							{
+								"source": {
+									"name": "Typ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TYP"
+								}
+							},
+							{
+								"source": {
+									"name": "BahnhofDS100",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BAHNHOFDS100"
+								}
+							},
+							{
+								"source": {
+									"name": "BahnhofNr",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BAHNHOFNR"
+								}
+							},
+							{
+								"source": {
+									"name": "AnlageNr",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ANLAGENR"
+								}
+							},
+							{
+								"source": {
+									"name": "JahrAktivierung",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "JAHRAKTIVIERUNG"
+								}
+							},
+							{
+								"source": {
+									"name": "TpEbene3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TPEBENE3"
+								}
+							},
+							{
+								"source": {
+									"name": "StreckeNr",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "STRECKENR"
+								}
+							},
+							{
+								"source": {
+									"name": "JahrAbarbeitungSoll",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "JAHRABARBEITUNGSOLL"
+								}
+							},
+							{
+								"source": {
+									"name": "JahrAbarbeitungVIst",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "JAHRABARBEITUNGVIST"
+								}
+							},
+							{
+								"source": {
+									"name": "KmVon",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "KMVON"
+								}
+							},
+							{
+								"source": {
+									"name": "KmBis",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "KMBIS"
+								}
+							},
+							{
+								"source": {
+									"name": "KmLaenge",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "KMLAENGE"
+								}
+							},
+							{
+								"source": {
+									"name": "Bundesland",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BUNDESLAND"
+								}
+							},
+							{
+								"source": {
+									"name": "Landkreis",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LANDKREIS"
+								}
+							},
+							{
+								"source": {
+									"name": "Geschaeftsfeld",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "GESCHAEFTSFELD"
+								}
+							},
+							{
+								"source": {
+									"name": "Organisation",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ORGANISATION"
+								}
+							},
+							{
+								"source": {
+									"name": "Prioritaet",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PRIORITAET"
+								}
+							},
+							{
+								"source": {
+									"name": "Prueffallrelevant",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PRUEFFALLRELEVANT"
+								}
+							},
+							{
+								"source": {
+									"name": "EigentumBemerkung",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "EIGENTUMBEMERKUNG"
+								}
+							},
+							{
+								"source": {
+									"name": "AnzahlSGB",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ANZAHLSGB"
+								}
+							},
+							{
+								"source": {
+									"name": "GLEW",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "GLEW"
+								}
+							},
+							{
+								"source": {
+									"name": "DatBegehung",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DATBEGEHUNG"
+								}
+							},
+							{
+								"source": {
+									"name": "Bemerkung",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BEMERKUNG"
+								}
+							},
+							{
+								"source": {
+									"name": "GeoTyp",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "GEOTYP"
+								}
+							},
+							{
+								"source": {
+									"name": "GeoLaengeVon",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "GEOLAENGEVON"
+								}
+							},
+							{
+								"source": {
+									"name": "GeoLaengeBis",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "GEOLAENGEBIS"
+								}
+							},
+							{
+								"source": {
+									"name": "GeoBreiteVon",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "GEOBREITEVON"
+								}
+							},
+							{
+								"source": {
+									"name": "GeoBreiteBis",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "GEOBREITEBIS"
+								}
+							},
+							{
+								"source": {
+									"name": "Cluster",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CLUSTER"
+								}
+							},
+							{
+								"source": {
+									"name": "ZustaendigeOrganisationseinheit",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BAHNHOFSMANAGEMENT"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "FS_VISA_SWAT_DBWObjekt",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SqlServer_Swat_DBW_OBJECT",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"parameters": {
+			"Row_Number": {
+				"type": "Int",
+				"defaultValue": 0
+			}
+		},
+		"variables": {
+			"Row_Number": {
+				"type": "Integer"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-10-08T16:56:09Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

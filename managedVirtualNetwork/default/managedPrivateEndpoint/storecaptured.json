@@ -1,0 +1,10 @@
+{
+	"name": "storecaptured",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/2f51148a-d202-478e-93f0-ade833d83f40/resourceGroups/rg-dbim-immo-tst-1/providers/Microsoft.Storage/storageAccounts/stdlimmotst1captured",
+		"groupId": "dfs",
+		"fqdns": [
+			"stdlimmotst1captured.dfs.core.windows.net"
+		]
+	}
+}

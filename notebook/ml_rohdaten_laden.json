@@ -1,0 +1,270 @@
+{
+	"name": "ml_rohdaten_laden",
+	"properties": {
+		"folder": {
+			"name": "ML_Notebooks_Einkaufsdaten"
+		},
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "sparkpool0",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "aefe2964-f8e5-47e2-9f8f-922fb03f72eb"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1"
+			},
+			"enableDebugMode": false,
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/2f51148a-d202-478e-93f0-ade833d83f40/resourceGroups/rg-dbim-immo-tst-1/providers/Microsoft.Synapse/workspaces/synw-immo-tst-1/bigDataPools/sparkpool0",
+				"name": "sparkpool0",
+				"type": "Spark",
+				"endpoint": "https://synw-immo-tst-1.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool0",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
+				},
+				"sparkVersion": "3.4",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%sql\r\n",
+					"\r\n",
+					"-- use mydatabase Wie kann ich die Datenbank auswählen ??\r\n",
+					"\r\n",
+					"-- Erstellen einer neuen Tabelle\r\n",
+					"\r\n",
+					"CREATE TABLE ml_einkaufsdaten_rohdaten (\r\n",
+					"    BELEGDATUM varchar (255),\r\n",
+					"    BESTELLMENGE varchar (255),\r\n",
+					"    BESTELLMENGENEINHEIT varchar (255),\r\n",
+					"    BESTELLNETTOWERT varchar (255),\r\n",
+					"    BEZUGSDATUM varchar (255),\r\n",
+					"    EINKAUFSBELEG varchar (255),\r\n",
+					"    EINK_ORGANISATION varchar (255)\r\n",
+					"    \r\n",
+					")\r\n",
+					"--USING delta --Was bedeutet dieses Format?\r\n",
+					"--PARTITIONED BY (id);\r\n",
+					""
+				],
+				"execution_count": 1
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%sql\r\n",
+					"\r\n",
+					"-- Hinzufügen einer neuen Spalte\r\n",
+					"\r\n",
+					"ALTER TABLE ml_einkaufsdaten_rohdaten\r\n",
+					"ADD COLUMNS \r\n",
+					"(\r\n",
+					"GEBAEUDE varchar (255),\r\n",
+					"KONTIERUNGSTYP varchar (255),\r\n",
+					"KOSTENRECHNUNGSKREIS varchar (255),\r\n",
+					"KOSTENSTELLE varchar (255),\r\n",
+					"LAUFENDE_KONTIERUNG varchar (255),\r\n",
+					"LIEFERANT_LIEFERWERK varchar (255),\r\n",
+					"MATERIAL varchar (255),\r\n",
+					"NETTOPREIS varchar (255),\r\n",
+					"NOCH_ZU_BERECHNEN_WERT varchar (255),\r\n",
+					"OFFENER_GESAMTWERT varchar (255)\r\n",
+					"\r\n",
+					"\r\n",
+					")"
+				],
+				"execution_count": 2
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%sql\r\n",
+					"\r\n",
+					"-- Hinzufügen einer neuen Spalte\r\n",
+					"\r\n",
+					"ALTER TABLE ml_einkaufsdaten_rohdaten\r\n",
+					"ADD COLUMNS \r\n",
+					"(\r\n",
+					"POSITIONEN varchar (255),\r\n",
+					"PSP_ELEMENT varchar (255),\r\n",
+					"RAHMENKOSTENSTELLE varchar (255),\r\n",
+					"SACHKONTO varchar (255),\r\n",
+					"STEUERKENNZEICHEN varchar (255),\r\n",
+					"VERTEILUNG varchar (255),\r\n",
+					"WARENGRUPPE varchar (255),\r\n",
+					"WERK varchar (255),\r\n",
+					"WIRTSCHAFTSEINHEIT varchar (255)\r\n",
+					"\r\n",
+					"\r\n",
+					"\r\n",
+					")"
+				],
+				"execution_count": 3
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "python"
+					},
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"%%pyspark # Verwende PySpark\r\n",
+					"\r\n",
+					"# Lade die notwendigen Bibliotheken\r\n",
+					"from pyspark.sql import SparkSession\r\n",
+					"from pyspark.sql.types import IntegerType, StringType, StructType, StructField\r\n",
+					"\r\n",
+					"# Definiere das Schema explizit\r\n",
+					"schema = StructType([\r\n",
+					"    StructField(\"BELEGDATUM\", StringType(), True),\r\n",
+					"    StructField(\"BESTELLMENGE\", StringType(), True),\r\n",
+					"    StructField(\"BESTELLMENGENEINHEIT\", StringType(), True),\r\n",
+					"    StructField(\"BESTELLNETTOWERT\", StringType(), True),\r\n",
+					"    StructField(\"BEZUGSDATUM\", StringType(), True),\r\n",
+					"    StructField(\"EINKAUFSBELEG\", StringType(), True),\r\n",
+					"    StructField(\"EINK_ORGANISATION\", StringType(), True),\r\n",
+					"    StructField(\"GEBAEUDE\", StringType(), True),\r\n",
+					"    StructField(\"KONTIERUNGSTYP\", StringType(), True),\r\n",
+					"    StructField(\"KOSTENRECHNUNGSKREIS\", StringType(), True),\r\n",
+					"    StructField(\"KOSTENSTELLE\", StringType(), True),\r\n",
+					"    StructField(\"LAUFENDE_KONTIERUNG\", StringType(), True),\r\n",
+					"    StructField(\"LIEFERANT_LIEFERWERK\", StringType(), True),\r\n",
+					"    StructField(\"MATERIAL\", StringType(), True),\r\n",
+					"    StructField(\"NETTOPREIS\", StringType(), True),\r\n",
+					"    StructField(\"NOCH_ZU_BERECHNEN_WERT\", StringType(), True),\r\n",
+					"    StructField(\"OFFENER_GESAMTWERT\", StringType(), True),\r\n",
+					"    StructField(\"POSITIONEN\", StringType(), True),\r\n",
+					"    StructField(\"PSP_ELEMENT\", StringType(), True),\r\n",
+					"    StructField(\"RAHMENKOSTENSTELLE\", StringType(), True),\r\n",
+					"    StructField(\"SACHKONTO\", StringType(), True),\r\n",
+					"    StructField(\"STEUERKENNZEICHEN\", StringType(), True),\r\n",
+					"    StructField(\"VERTEILUNG\", StringType(), True),\r\n",
+					"    StructField(\"WARENGRUPPE\", StringType(), True),\r\n",
+					"    StructField(\"WERK\", StringType(), True),\r\n",
+					"    StructField(\"WIRTSCHAFTSEINHEIT\", StringType(), True)\r\n",
+					"    \r\n",
+					"])\r\n",
+					"\r\n",
+					"#Beispiel: CSV-Daten in eine bestehende Tabelle einfügen\r\n",
+					"# CSV-Datei in ein DataFrame laden\r\n",
+					"csv_file_path = \"abfss://synapse@stdlimmotst1synapse.dfs.core.windows.net/synapse/workspaces/synw-immo-tst-1/warehouse/UT_C/Einkaufsdaten.csv\"\r\n",
+					"\r\n",
+					"\r\n",
+					"# Lade die CSV-Datei in ein Spark DataFrame\r\n",
+					"df = spark.read.format(\"csv\").option(\"header\", \"true\").option(\"delimiter\", \";\").schema(schema).load(csv_file_path)\r\n",
+					"\r\n",
+					"# Zeige die ersten paar Zeilen des DataFrames an\r\n",
+					"df.show()\r\n",
+					"df.printSchema()"
+				],
+				"execution_count": 5
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "python"
+					},
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"%%pyspark\r\n",
+					"\r\n",
+					"# Schreibe den DataFrame in die bestehende Tabelle\r\n",
+					"table_name = \"ml_einkaufsdaten_rohdaten\"\r\n",
+					"\r\n",
+					"# Verwende die \"append\" Methode, um die Daten einzufügen\r\n",
+					"df.write.format(\"hive\").mode(\"append\").saveAsTable(table_name)\r\n",
+					"\r\n",
+					"# Den DataFrame in eine bestehende Synapse SQL-Tabelle einfügen\r\n",
+					"#df.write \\\r\n",
+					"#.synapsesql(\"default.dbo.ml_einkaufsdaten_rohdaten\", mode=\"append\")\r\n",
+					""
+				],
+				"execution_count": 9
+			}
+		]
+	}
+}

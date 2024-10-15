@@ -1,0 +1,21 @@
+{
+	"name": "SapTable_A32",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SapTable",
+		"typeProperties": {
+			"clientId": "001",
+			"language": "DE",
+			"sncMode": false,
+			"userName": "ALE-BODS",
+			"server": "/H/lb-saprouter-001.sap.comp.db.de/S/3299/H/a32-ci.sap.comp.db.de",
+			"systemNumber": "01",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJlMDlmMWMxYy05Yjc1LTRjZGMtOWYzYy0wYWQ5NzhkZmUzZDYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "ComputeNetRuntime1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

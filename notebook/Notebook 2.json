@@ -1,0 +1,77 @@
+{
+	"name": "Notebook 2",
+	"properties": {
+		"folder": {
+			"name": "ML_Notebooks_FIN_IST_BELEG"
+		},
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "sparkpool0",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "ba734aa1-1e32-4274-b5d1-44fc8e7162b2"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1"
+			},
+			"enableDebugMode": false,
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/2f51148a-d202-478e-93f0-ade833d83f40/resourceGroups/rg-dbim-immo-tst-1/providers/Microsoft.Synapse/workspaces/synw-immo-tst-1/bigDataPools/sparkpool0",
+				"name": "sparkpool0",
+				"type": "Spark",
+				"endpoint": "https://synw-immo-tst-1.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool0",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
+				},
+				"sparkVersion": "3.4",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "python"
+					}
+				},
+				"source": [
+					"%%pyspark\r\n",
+					"# Pfad zur Parquet-Datei (anpassen)\r\n",
+					"parquet_path = \"abfss://synapse@stdlimmotst1synapse.dfs.core.windows.net/synapse/workspaces/synw-immo-tst-1/fin_ist_beleg/COREVIEW.vw_OBJ_FIN_IST_BELEG.parquet\"\r\n",
+					"\r\n",
+					"# Parquet-Datei in einen DataFrame laden\r\n",
+					"df = spark.read.format(\"parquet\").load(parquet_path)\r\n",
+					"\r\n",
+					"# Zeige die ersten paar Zeilen der Datei an\r\n",
+					"df.show()"
+				],
+				"execution_count": 5
+			}
+		]
+	}
+}

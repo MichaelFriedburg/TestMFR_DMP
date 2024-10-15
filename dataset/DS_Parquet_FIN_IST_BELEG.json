@@ -1,0 +1,21 @@
+{
+	"name": "DS_Parquet_FIN_IST_BELEG",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SDSGEN_FIN_IST_BELEG",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "synapse/workspaces/synw-immo-tst-1/fin_ist_beleg",
+				"fileSystem": "synapse"
+			},
+			"compressionCodec": "gzip"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "FS_VISA_Projekte",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "\\\\BKU.db.de\\db\\DB_001\\GLW_66\\DBImm_Projekte\\VISA\\DWH\\",
+			"userId": "BKU\\MichaelFriedburg",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI2YjQ0YmE2Ny1jZThlLTRiNzQtYmYxZC03ZDMxODlhMTI3OGQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "ComputeNetRuntime1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

@@ -1,0 +1,19 @@
+{
+	"name": "LS_API_ORG_DATA",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://apis.hub.db.de/db/apis/org-data-api/v2/lists/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Basic",
+			"userName": "32546A63-45EE-B79D-A1D8-3852BB7BCC82",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI4ZDNlOGNjMi00NzI0LTQ2MmQtOWRhZi00YzI0MTJlNTMwNWUiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "ComputeNetRuntime1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

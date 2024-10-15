@@ -1,0 +1,21 @@
+{
+	"name": "PostgreSql_GRE",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "PostgreSqlV2",
+		"typeProperties": {
+			"server": "flimasng-iat-rds-dbgrundsteuer.crrxp2wbp8g5.eu-central-1.rds.amazonaws.com",
+			"port": 5432,
+			"database": "DBGrundsteuer",
+			"username": "fmpush",
+			"sslMode": 1,
+			"authenticationType": "Basic",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJiNjg2Nzk2MS0xYzQ4LTQ3ZGEtODg0NC1lNDQxODYyNzk0ZDciLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "ComputeNetRuntime1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

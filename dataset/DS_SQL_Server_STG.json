@@ -1,0 +1,17 @@
+{
+	"name": "DS_SQL_Server_STG",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_Server_STG",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "SWAT",
+			"table": "DBW_OBJEKT"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

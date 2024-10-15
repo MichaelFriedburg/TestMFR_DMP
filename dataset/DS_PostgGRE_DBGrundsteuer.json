@@ -1,0 +1,17 @@
+{
+	"name": "DS_PostgGRE_DBGrundsteuer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "PostgreSql_GRE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "PostgreSqlV2Table",
+		"schema": [],
+		"typeProperties": {
+			"schema": "gebaeude",
+			"table": "mv_gebaeude_ipe_pfs_be"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

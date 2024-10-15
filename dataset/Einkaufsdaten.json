@@ -1,0 +1,28 @@
+{
+	"name": "Einkaufsdaten",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "storelanding",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "UTC_FIN_DOMÄNE"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Einkaufsdaten.csv",
+				"folderPath": "UT_C",
+				"fileSystem": "landing"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

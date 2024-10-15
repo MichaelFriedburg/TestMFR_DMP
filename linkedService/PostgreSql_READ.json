@@ -1,0 +1,21 @@
+{
+	"name": "PostgreSql_READ",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "PostgreSqlV2",
+		"typeProperties": {
+			"server": "flimasng-dev-rds-dbflimasng.crrxp2wbp8g5.eu-central-1.rds.amazonaws.com",
+			"port": 5432,
+			"database": "dataproviderdb",
+			"username": "fmread",
+			"sslMode": 1,
+			"authenticationType": "Basic",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI1ZTE4YWI2Yi0wYWU3LTRjM2MtOWJiOC0zY2RlM2NjMGIzZTQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "ComputeNetRuntime1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

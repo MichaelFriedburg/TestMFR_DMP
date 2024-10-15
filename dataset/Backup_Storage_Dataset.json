@@ -1,0 +1,30 @@
+{
+	"name": "Backup_Storage_Dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "storebackup",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"DataLake_Zone": {
+				"type": "string"
+			},
+			"FolderPath": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": {
+					"value": "@concat(dataset().DataLake_Zone, '/', dataset().FolderPath)",
+					"type": "Expression"
+				},
+				"container": "backup"
+			}
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

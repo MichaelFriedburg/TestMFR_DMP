@@ -1,0 +1,15 @@
+{
+	"name": "storeprocessed",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"type": "AzureBlobFS",
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		},
+		"annotations": [],
+		"typeProperties": {
+			"url": "https://stdlimmotst1processed.dfs.core.windows.net"
+		}
+	}
+}

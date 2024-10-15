@@ -1,0 +1,142 @@
+{
+	"name": "Backup-Pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Backup_Data",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": {
+								"value": "@bool(pipeline().parameters.Should_Copy_Recursive)",
+								"type": "Expression"
+							},
+							"modifiedDatetimeStart": {
+								"value": "@pipeline().parameters.Trigger_Start",
+								"type": "Expression"
+							},
+							"modifiedDatetimeEnd": {
+								"value": "@pipeline().parameters.Trigger_End",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "@pipeline().parameters.File_Name",
+								"type": "Expression"
+							},
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false,
+					"preserve": [
+						"Attributes"
+					],
+					"skipErrorFile": {
+						"dataInconsistency": false
+					},
+					"validateDataConsistency": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Info",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "storebackup",
+								"type": "LinkedServiceReference"
+							},
+							"path": {
+								"value": "@concat('logs/', pipeline().parameters.DataLake_Zone)",
+								"type": "Expression"
+							}
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Datalake_Dataset",
+						"type": "DatasetReference",
+						"parameters": {
+							"DataLake_Zone": {
+								"value": "@pipeline().parameters.DataLake_Zone",
+								"type": "Expression"
+							},
+							"Folder_Path": {
+								"value": "@pipeline().parameters.Folder_Path",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Backup_Storage_Dataset",
+						"type": "DatasetReference",
+						"parameters": {
+							"DataLake_Zone": {
+								"value": "@pipeline().parameters.DataLake_Zone",
+								"type": "Expression"
+							},
+							"FolderPath": {
+								"value": "@pipeline().parameters.Folder_Path",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"Folder_Path": {
+				"type": "string"
+			},
+			"File_Name": {
+				"type": "string"
+			},
+			"DataLake_Zone": {
+				"type": "string",
+				"defaultValue": "landing"
+			},
+			"Trigger_Start": {
+				"type": "string",
+				"defaultValue": "01/01/1900 00:00:00"
+			},
+			"Trigger_End": {
+				"type": "string",
+				"defaultValue": "12/31/2100 00:00:00"
+			},
+			"Should_Copy_Recursive": {
+				"type": "bool",
+				"defaultValue": true
+			}
+		},
+		"folder": {
+			"name": "Backup"
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-09-20T13:25:14Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

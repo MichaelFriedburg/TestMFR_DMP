@@ -1,0 +1,145 @@
+{
+	"name": "Notebook 3",
+	"properties": {
+		"folder": {
+			"name": "ML_Notebooks_FIN_IST_BELEG"
+		},
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "sparkpool0",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "48dc8a01-4b51-49f1-9f5b-f9d948409938"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1"
+			},
+			"enableDebugMode": false,
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/2f51148a-d202-478e-93f0-ade833d83f40/resourceGroups/rg-dbim-immo-tst-1/providers/Microsoft.Synapse/workspaces/synw-immo-tst-1/bigDataPools/sparkpool0",
+				"name": "sparkpool0",
+				"type": "Spark",
+				"endpoint": "https://synw-immo-tst-1.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool0",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
+				},
+				"sparkVersion": "3.4",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "sparksql"
+					}
+				},
+				"source": [
+					"%%sql\r\n",
+					"\r\n",
+					"-- use mydatabase Wie kann ich die Datenbank auswählen ??\r\n",
+					"\r\n",
+					"-- Erstellen einer neuen Tabelle\r\n",
+					"\r\n",
+					"CREATE TABLE fin_ist_beleg (\r\n",
+					"ID_HASH_IST_BELEG varchar (255),\r\n",
+					"ID_BELEGNUMMER varchar (255),\r\n",
+					"ID_BESTELLNUMMER_MM varchar (255),\r\n",
+					"ID_SAPFI_HON_ABRECHNUNG varchar (255),\r\n",
+					"ID_PROJEKTNUMMER varchar (255),\r\n",
+					"ID_SAPFI_KLVR varchar (255),\r\n",
+					"ID_BST varchar (255),\r\n",
+					"ID_RKOST varchar (255),\r\n",
+					"ID_KONTEN varchar (255),\r\n",
+					"ID_VERR_BSTVKZ varchar (255),\r\n",
+					"ID_DATENART varchar (255),\r\n",
+					"ID_BESTAND varchar (255),\r\n",
+					"ID_STEUERKENNZEICHEN varchar (255),\r\n",
+					"ID_WERT varchar (255),\r\n",
+					"ID_KONZERNVERRECHNUNGSNUMMER varchar (255),\r\n",
+					"ID_AAR_NUMMER varchar (255),\r\n",
+					"ID_MIETVERTRAG_NR varchar (255),\r\n",
+					"ID_PSP_KONZERN varchar (255),\r\n",
+					"BUCHUNGSKREIS varchar (255),\r\n",
+					"BST varchar (255),\r\n",
+					"BST_KT_SPARTE varchar (255),\r\n",
+					"BST_KT_SPARTE_SORT varchar (255),\r\n",
+					"BST_EBENE_1 varchar (255),\r\n",
+					"BST_EBENE1_SORT varchar (255),\r\n",
+					"BST_EBENE_2 varchar (255),\r\n",
+					"BST_OPERATIV varchar (255),\r\n",
+					"BUCHUNGSZEITRAUM varchar (255),\r\n",
+					"BELEGNUMMER varchar (255),\r\n",
+					"JAHR varchar (255),\r\n",
+					"MONATE varchar (255),\r\n",
+					"SYSTEM_AAR_KVT varchar (255),\r\n",
+					"BELEGART varchar (255),\r\n",
+					"BUCHUNGSDATUM varchar (255),\r\n",
+					"ERFASSUNGSDATUM varchar (255),\r\n",
+					"AAR_NUMMER varchar (255),\r\n",
+					"PROJEKTNUMMER varchar (255),\r\n",
+					"REPORT_IST_EURO varchar (255),\r\n",
+					"BELEGTEXT varchar (255),\r\n",
+					"BELEGTEXT_2 varchar (255),\r\n",
+					"BELEGTEXT_3 varchar (255),\r\n",
+					"BESTELLNUMMER varchar (255),\r\n",
+					"BESTELLPOSITION varchar (255),\r\n",
+					"KREDITOR_NR varchar (255),\r\n",
+					"DEBITOR_NR varchar (255),\r\n",
+					"GESCHAEFTSBEREICH varchar (255),\r\n",
+					"KONZERNVERRECHNUNGSNUMMER varchar (255),\r\n",
+					"MIETVERTRAG_AMV varchar (255),\r\n",
+					"MIETVERTRAG_AMV_FL varchar (255),\r\n",
+					"MIETVERTRAG_VMV varchar (255),\r\n",
+					"BETRAG_IST varchar (255),\r\n",
+					"WERT varchar (255),\r\n",
+					"BUDGETPOSITION_SEKUNDAER varchar (255),\r\n",
+					"KONTEN_FAKTOR varchar (255),\r\n",
+					"DATENQUELLE varchar (255),\r\n",
+					"SUBST_KOMBI varchar (255),\r\n",
+					"SUBST_KOMBI_2 varchar (255),\r\n",
+					"ID_BST_VALID_TIME varchar (255),\r\n",
+					"ID_KONTEN_VALID_TIME varchar (255),\r\n",
+					"KONTEN varchar (255),\r\n",
+					"ID_RKOST_VALID_TIME varchar (255),\r\n",
+					"ID_VERR_BSTVKZ_VALID_TIME varchar (255),\r\n",
+					"__LDG__CREATED varchar (255),\r\n",
+					"__STG__CREATED varchar (255),\r\n",
+					"__PRE_CORE__CREATED varchar (255),\r\n",
+					"__CORE__CREATED varchar (255)\r\n",
+					"\r\n",
+					"\r\n",
+					"    \r\n",
+					")\r\n",
+					"--USING delta --Was bedeutet dieses Format?\r\n",
+					"--PARTITIONED BY (id);"
+				]
+			}
+		]
+	}
+}

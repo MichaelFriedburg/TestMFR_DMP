@@ -1,0 +1,106 @@
+{
+	"name": "ml_Dataflow_fin_ist_beleg",
+	"properties": {
+		"folder": {
+			"name": "ML_Dataflow_fin_ist_beleg"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DS_Parquet_FIN_IST_BELEG",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          ID_HASH_IST_BELEG as string,",
+				"          ID_BELEGNUMMER as string,",
+				"          ID_BESTELLNUMMER_MM as integer,",
+				"          ID_SAPFI_HON_ABRECHNUNG as string,",
+				"          ID_PROJEKTNUMMER as string,",
+				"          ID_SAPFI_KLVR as string,",
+				"          ID_BST as string,",
+				"          ID_RKOST as string,",
+				"          ID_KONTEN as string,",
+				"          ID_VERR_BSTVKZ as string,",
+				"          ID_DATENART as string,",
+				"          ID_BESTAND as string,",
+				"          ID_STEUERKENNZEICHEN as string,",
+				"          ID_WERT as string,",
+				"          ID_KONZERNVERRECHNUNGSNUMMER as string,",
+				"          ID_AAR_NUMMER as string,",
+				"          ID_MIETVERTRAG_NR as string,",
+				"          ID_PSP_KONZERN as string,",
+				"          BUCHUNGSKREIS as string,",
+				"          BST as string,",
+				"          BST_KT_SPARTE as string,",
+				"          BST_KT_SPARTE_SORT as integer,",
+				"          BST_EBENE_1 as string,",
+				"          BST_EBENE1_SORT as integer,",
+				"          BST_EBENE_2 as string,",
+				"          BST_OPERATIV as integer,",
+				"          BUCHUNGSZEITRAUM as string,",
+				"          BELEGNUMMER as string,",
+				"          JAHR as string,",
+				"          MONATE as string,",
+				"          SYSTEM_AAR_KVT as string,",
+				"          BELEGART as string,",
+				"          BUCHUNGSDATUM as date,",
+				"          ERFASSUNGSDATUM as date,",
+				"          AAR_NUMMER as string,",
+				"          PROJEKTNUMMER as string,",
+				"          REPORT_IST_EURO as decimal(38,2),",
+				"          BELEGTEXT as string,",
+				"          BELEGTEXT_2 as string,",
+				"          BELEGTEXT_3 as string,",
+				"          BESTELLNUMMER as string,",
+				"          BESTELLPOSITION as string,",
+				"          KREDITOR_NR as string,",
+				"          DEBITOR_NR as string,",
+				"          GESCHAEFTSBEREICH as string,",
+				"          KONZERNVERRECHNUNGSNUMMER as string,",
+				"          MIETVERTRAG_AMV as string,",
+				"          MIETVERTRAG_AMV_FL as string,",
+				"          MIETVERTRAG_VMV as string,",
+				"          BETRAG_IST as decimal(38,2),",
+				"          WERT as string,",
+				"          BUDGETPOSITION_SEKUNDAER as string,",
+				"          KONTEN_FAKTOR as integer,",
+				"          DATENQUELLE as string,",
+				"          SUBST_KOMBI as string,",
+				"          SUBST_KOMBI_2 as string,",
+				"          ID_BST_VALID_TIME as string,",
+				"          ID_KONTEN_VALID_TIME as string,",
+				"          KONTEN as string,",
+				"          ID_RKOST_VALID_TIME as string,",
+				"          ID_VERR_BSTVKZ_VALID_TIME as string,",
+				"          {__LDG__CREATED} as timestamp,",
+				"          {__STG__CREATED} as timestamp,",
+				"          {__PRE_CORE__CREATED} as timestamp,",
+				"          {__CORE__CREATED} as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> source1",
+				"source1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     store: 'synapse',",
+				"     databaseType: 'spark',",
+				"     format: 'table',",
+				"     database: 'default',",
+				"     tableName: 'fin_ist_beleg') ~> sink1"
+			]
+		}
+	}
+}

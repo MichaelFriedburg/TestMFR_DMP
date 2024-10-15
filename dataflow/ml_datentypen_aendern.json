@@ -1,0 +1,81 @@
+{
+	"name": "ml_datentypen_aendern",
+	"properties": {
+		"folder": {
+			"name": "ML_Dataflow_Einkaufsdaten"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Einkaufsdaten",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "cast1"
+				}
+			],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 cast(output(",
+				"          BELEGDATUM as date 'dd/MM/yyyy',",
+				"          BESTELLMENGE as float '000.##',",
+				"          BESTELLMENGENEINHEIT as string,",
+				"          BESTELLNETTOWERT as decimal(10,0) '000,000,000.000',",
+				"          BEZUGSDATUM as date 'dd/MM/yyyy',",
+				"          NETTOPREIS as float '000.##',",
+				"          NOCH_ZU_BERECHNEN_WERT as float '000.##',",
+				"          OFFENER_GESAMTWERT as decimal(10,0) '000,000,000.000'",
+				"     ),",
+				"     errors: true) ~> cast1",
+				"cast1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     store: 'synapse',",
+				"     databaseType: 'spark',",
+				"     format: 'table',",
+				"     database: 'default',",
+				"     tableName: 'ml_einkaufsdaten_rohdaten',",
+				"     input(",
+				"          BELEGDATUM as string,",
+				"          BESTELLMENGE as string,",
+				"          BESTELLMENGENEINHEIT as string,",
+				"          BESTELLNETTOWERT as string,",
+				"          BEZUGSDATUM as string,",
+				"          EINKAUFSBELEG as string,",
+				"          EINK_ORGANISATION as string,",
+				"          GEBAEUDE as string,",
+				"          KONTIERUNGSTYP as string,",
+				"          KOSTENRECHNUNGSKREIS as string,",
+				"          KOSTENSTELLE as string,",
+				"          LAUFENDE_KONTIERUNG as string,",
+				"          LIEFERANT_LIEFERWERK as string,",
+				"          MATERIAL as string,",
+				"          NETTOPREIS as string,",
+				"          NOCH_ZU_BERECHNEN_WERT as string,",
+				"          OFFENER_GESAMTWERT as string,",
+				"          POSITIONEN as string,",
+				"          PSP_ELEMENT as string,",
+				"          RAHMENKOSTENSTELLE as string,",
+				"          SACHKONTO as string,",
+				"          STEUERKENNZEICHEN as string,",
+				"          VERTEILUNG as string,",
+				"          WARENGRUPPE as string,",
+				"          WERK as string,",
+				"          WIRTSCHAFTSEINHEIT as string",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}
